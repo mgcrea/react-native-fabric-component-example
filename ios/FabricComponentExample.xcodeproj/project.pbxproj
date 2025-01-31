@@ -10,6 +10,7 @@
 		09FC88962D4D834F001A9689 /* RCTWebView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 09FC88952D4D834F001A9689 /* RCTWebView.mm */; };
 		09FC889E2D4D83DE001A9689 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09FC889D2D4D83DE001A9689 /* WebKit.framework */; };
 		09FC88A02D4D858D001A9689 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FC889F2D4D858D001A9689 /* AppDelegate.swift */; };
+		09FC88A42D4D87A0001A9689 /* RCTColorView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 09FC88A32D4D87A0001A9689 /* RCTColorView.mm */; };
 		0C80B921A6F3F58F76C31292 /* libPods-FabricComponentExample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-FabricComponentExample.a */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		297E359DD8CACB6611CAFD8D /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */; };
@@ -22,6 +23,8 @@
 		09FC889D2D4D83DE001A9689 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		09FC889F2D4D858D001A9689 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = FabricComponentExample/AppDelegate.swift; sourceTree = "<group>"; };
 		09FC88A12D4D8594001A9689 /* FabricComponentExample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FabricComponentExample-Bridging-Header.h"; sourceTree = "<group>"; };
+		09FC88A32D4D87A0001A9689 /* RCTColorView.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = RCTColorView.mm; sourceTree = "<group>"; };
+		09FC88A52D4D87BE001A9689 /* RCTColorView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RCTColorView.h; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* FabricComponentExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FabricComponentExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = FabricComponentExample/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = FabricComponentExample/Info.plist; sourceTree = "<group>"; };
@@ -53,6 +56,15 @@
 				09FC889C2D4D83A6001A9689 /* RCTWebView.h */,
 			);
 			path = WebView;
+			sourceTree = "<group>";
+		};
+		09FC88A22D4D877E001A9689 /* ColorView */ = {
+			isa = PBXGroup;
+			children = (
+				09FC88A32D4D87A0001A9689 /* RCTColorView.mm */,
+				09FC88A52D4D87BE001A9689 /* RCTColorView.h */,
+			);
+			path = ColorView;
 			sourceTree = "<group>";
 		};
 		13B07FAE1A68108700A75B9A /* FabricComponentExample */ = {
@@ -88,6 +100,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				09FC88A22D4D877E001A9689 /* ColorView */,
 				09FC88942D4D8321001A9689 /* WebView */,
 				13B07FAE1A68108700A75B9A /* FabricComponentExample */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
@@ -265,6 +278,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09FC88A42D4D87A0001A9689 /* RCTColorView.mm in Sources */,
 				09FC88A02D4D858D001A9689 /* AppDelegate.swift in Sources */,
 				09FC88962D4D834F001A9689 /* RCTWebView.mm in Sources */,
 			);
@@ -398,7 +412,10 @@
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 					"-DFOLLY_HAVE_CLOCK_GETTIME=1",
 				);
-				OTHER_LDFLAGS = "$(inherited)  ";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					" ",
+				);
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
@@ -467,7 +484,10 @@
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 					"-DFOLLY_HAVE_CLOCK_GETTIME=1",
 				);
-				OTHER_LDFLAGS = "$(inherited)  ";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					" ",
+				);
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				USE_HERMES = true;

@@ -48,7 +48,8 @@
     },
     "ios": {
       "componentProvider": {
-        "CustomWebView": "RCTWebView"
+        "CustomWebView": "RCTWebView",
+        "NativeColorView": "RCTColorView"
       }
     }
   }
