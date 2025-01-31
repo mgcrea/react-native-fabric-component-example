@@ -6,6 +6,7 @@
 #import <react/renderer/components/AppSpec/RCTComponentViewHelpers.h>
 
 // #import "RCTFabricComponentsPlugins.h"
+#import "FabricComponentExample-Swift.h"
 
 using namespace facebook::react;
 
@@ -14,7 +15,7 @@ using namespace facebook::react;
 @end
 
 @implementation RCTColorView {
-    UIView * _view;
+    ColorView * _view;
 }
 
 + (ComponentDescriptorProvider)componentDescriptorProvider
@@ -28,7 +29,7 @@ using namespace facebook::react;
     static const auto defaultProps = std::make_shared<const NativeColorViewProps>();
     _props = defaultProps;
 
-    _view = [[UIView alloc] init];
+    _view = [ColorView new];
 
     self.contentView = _view;
   }
@@ -41,10 +42,11 @@ using namespace facebook::react;
     const auto &oldViewProps = *std::static_pointer_cast<NativeColorViewProps const>(_props);
     const auto &newViewProps = *std::static_pointer_cast<NativeColorViewProps const>(props);
 
-    if (oldViewProps.color != newViewProps.color) {
-        NSString * colorToConvert = [[NSString alloc] initWithUTF8String: newViewProps.color.c_str()];
-        [_view setBackgroundColor:[self hexStringToColor:colorToConvert]];
-    }
+    // Convert the C++ string prop to NSString.
+    NSString *newColor = [NSString stringWithUTF8String:newViewProps.color.c_str()];
+    NSString *oldColor = [NSString stringWithUTF8String:oldViewProps.color.c_str()];
+    
+    [_view updatePropsWithNewColor:newColor oldColor:oldColor];
 
     [super updateProps:props oldProps:oldProps];
 }

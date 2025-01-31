@@ -9,8 +9,10 @@
 /* Begin PBXBuildFile section */
 		09FC88962D4D834F001A9689 /* RCTWebView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 09FC88952D4D834F001A9689 /* RCTWebView.mm */; };
 		09FC889E2D4D83DE001A9689 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09FC889D2D4D83DE001A9689 /* WebKit.framework */; };
-		09FC88A02D4D858D001A9689 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FC889F2D4D858D001A9689 /* AppDelegate.swift */; };
 		09FC88A42D4D87A0001A9689 /* RCTColorView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 09FC88A32D4D87A0001A9689 /* RCTColorView.mm */; };
+		09FC88A72D4D8C8C001A9689 /* ColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FC88A62D4D8C8C001A9689 /* ColorView.swift */; };
+		09FC88AB2D4D8FF2001A9689 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 09FC88A92D4D8FF2001A9689 /* AppDelegate.mm */; };
+		09FC88AC2D4D8FF2001A9689 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 09FC88AA2D4D8FF2001A9689 /* main.m */; };
 		0C80B921A6F3F58F76C31292 /* libPods-FabricComponentExample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-FabricComponentExample.a */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		297E359DD8CACB6611CAFD8D /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */; };
@@ -21,10 +23,13 @@
 		09FC88952D4D834F001A9689 /* RCTWebView.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = RCTWebView.mm; sourceTree = "<group>"; };
 		09FC889C2D4D83A6001A9689 /* RCTWebView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RCTWebView.h; sourceTree = "<group>"; };
 		09FC889D2D4D83DE001A9689 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
-		09FC889F2D4D858D001A9689 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = FabricComponentExample/AppDelegate.swift; sourceTree = "<group>"; };
 		09FC88A12D4D8594001A9689 /* FabricComponentExample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FabricComponentExample-Bridging-Header.h"; sourceTree = "<group>"; };
 		09FC88A32D4D87A0001A9689 /* RCTColorView.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = RCTColorView.mm; sourceTree = "<group>"; };
 		09FC88A52D4D87BE001A9689 /* RCTColorView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RCTColorView.h; sourceTree = "<group>"; };
+		09FC88A62D4D8C8C001A9689 /* ColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorView.swift; sourceTree = "<group>"; };
+		09FC88A82D4D8FF2001A9689 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = FabricComponentExample/AppDelegate.h; sourceTree = "<group>"; };
+		09FC88A92D4D8FF2001A9689 /* AppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = FabricComponentExample/AppDelegate.mm; sourceTree = "<group>"; };
+		09FC88AA2D4D8FF2001A9689 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = main.m; path = FabricComponentExample/main.m; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* FabricComponentExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FabricComponentExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = FabricComponentExample/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = FabricComponentExample/Info.plist; sourceTree = "<group>"; };
@@ -63,6 +68,7 @@
 			children = (
 				09FC88A32D4D87A0001A9689 /* RCTColorView.mm */,
 				09FC88A52D4D87BE001A9689 /* RCTColorView.h */,
+				09FC88A62D4D8C8C001A9689 /* ColorView.swift */,
 			);
 			path = ColorView;
 			sourceTree = "<group>";
@@ -70,12 +76,14 @@
 		13B07FAE1A68108700A75B9A /* FabricComponentExample */ = {
 			isa = PBXGroup;
 			children = (
-				09FC889F2D4D858D001A9689 /* AppDelegate.swift */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */,
 				09FC88A12D4D8594001A9689 /* FabricComponentExample-Bridging-Header.h */,
+				09FC88A82D4D8FF2001A9689 /* AppDelegate.h */,
+				09FC88A92D4D8FF2001A9689 /* AppDelegate.mm */,
+				09FC88AA2D4D8FF2001A9689 /* main.m */,
 			);
 			name = FabricComponentExample;
 			sourceTree = "<group>";
@@ -278,8 +286,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09FC88AB2D4D8FF2001A9689 /* AppDelegate.mm in Sources */,
+				09FC88AC2D4D8FF2001A9689 /* main.m in Sources */,
+				09FC88A72D4D8C8C001A9689 /* ColorView.swift in Sources */,
 				09FC88A42D4D87A0001A9689 /* RCTColorView.mm in Sources */,
-				09FC88A02D4D858D001A9689 /* AppDelegate.swift in Sources */,
 				09FC88962D4D834F001A9689 /* RCTWebView.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

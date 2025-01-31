@@ -30,6 +30,8 @@ using namespace facebook::react;
 {
   const auto &oldViewProps = *std::static_pointer_cast<CustomWebViewProps const>(_props);
   const auto &newViewProps = *std::static_pointer_cast<CustomWebViewProps const>(props);
+  
+  
 
   // Handle your props here
   if (oldViewProps.sourceURL != newViewProps.sourceURL) {
