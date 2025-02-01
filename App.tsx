@@ -33,6 +33,7 @@ const styles = StyleSheet.create({
     width: 60,
     height: 60,
     marginVertical: 20,
+    // backgroundColor: 'red',
   },
 });
 
