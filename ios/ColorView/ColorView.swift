@@ -1,13 +1,6 @@
 import UIKit
 
-// MARK: - Fabric Integration Types
-
-typealias ComponentDescriptorProvider = () -> Void
-func concreteComponentDescriptorProvider<T>(_: T.Type) -> ComponentDescriptorProvider {
-  return {}
-}
-
-protocol ComponentViewProtocol {}
+// MARK: - Props
 
 struct NativeColorViewProps {
   var color: String = ""
@@ -19,11 +12,9 @@ extension NativeColorViewProps {
   }
 }
 
-final class NativeColorViewComponentDescriptor {}
-
 // MARK: - ColorView
 
-final class ColorView: UIView, ComponentViewProtocol {
+final class ColorView: UIView {
   private let contentView: UIView
   private var props: NativeColorViewProps
 
