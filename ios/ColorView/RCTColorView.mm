@@ -10,23 +10,28 @@
 
 using namespace facebook::react;
 
+template <typename PropsT> NSDictionary *convertProps(const PropsT &props) {
+  // Adjust conversion per your prop structure.
+  return @{@"color" : [NSString stringWithUTF8String:props.color.c_str()]};
+}
+
 @interface RCTColorView () <RCTComponentViewProtocol>
 
 @end
 
 @implementation RCTColorView {
-    ColorView * _view;
+  ColorView *_view;
 }
 
-+ (ComponentDescriptorProvider)componentDescriptorProvider
-{
-    return concreteComponentDescriptorProvider<NativeColorViewComponentDescriptor>();
++ (ComponentDescriptorProvider)componentDescriptorProvider {
+  return concreteComponentDescriptorProvider<
+      NativeColorViewComponentDescriptor>();
 }
 
-- (instancetype)initWithFrame:(CGRect)frame
-{
+- (instancetype)initWithFrame:(CGRect)frame {
   if (self = [super initWithFrame:frame]) {
-    static const auto defaultProps = std::make_shared<const NativeColorViewProps>();
+    static const auto defaultProps =
+        std::make_shared<const NativeColorViewProps>();
     _props = defaultProps;
 
     _view = [ColorView new];
@@ -37,37 +42,23 @@ using namespace facebook::react;
   return self;
 }
 
-- (void)updateProps:(Props::Shared const &)props oldProps:(Props::Shared const &)oldProps
-{
-    const auto &oldViewProps = *std::static_pointer_cast<NativeColorViewProps const>(_props);
-    const auto &newViewProps = *std::static_pointer_cast<NativeColorViewProps const>(props);
+- (void)updateProps:(Props::Shared const &)props
+           oldProps:(Props::Shared const &)oldProps {
+  const auto &oldViewProps =
+      *std::static_pointer_cast<NativeColorViewProps const>(oldProps ? oldProps
+                                                                     : _props);
+  const auto &newViewProps =
+      *std::static_pointer_cast<NativeColorViewProps const>(props);
+  NSDictionary *oldViewPropsDict = convertProps(oldViewProps);
+  NSDictionary *newViewPropsDict = convertProps(newViewProps);
 
-    // Convert the C++ string prop to NSString.
-    NSString *newColor = [NSString stringWithUTF8String:newViewProps.color.c_str()];
-    NSString *oldColor = [NSString stringWithUTF8String:oldViewProps.color.c_str()];
-    
-    [_view updatePropsWithNewColor:newColor oldColor:oldColor];
+  [_view updatePropsWith:newViewPropsDict oldDictionary:oldViewPropsDict];
 
-    [super updateProps:props oldProps:oldProps];
+  [super updateProps:props oldProps:oldProps];
 }
 
-Class<RCTComponentViewProtocol> FabricDeclarativeViewCls(void)
-{
-    return RCTColorView.class;
-}
-
-- hexStringToColor:(NSString *)stringToConvert
-{
-    NSString *noHashString = [stringToConvert stringByReplacingOccurrencesOfString:@"#" withString:@""];
-    NSScanner *stringScanner = [NSScanner scannerWithString:noHashString];
-
-    unsigned hex;
-    if (![stringScanner scanHexInt:&hex]) return nil;
-    int r = (hex >> 16) & 0xFF;
-    int g = (hex >> 8) & 0xFF;
-    int b = (hex) & 0xFF;
-
-    return [UIColor colorWithRed:r / 255.0f green:g / 255.0f blue:b / 255.0f alpha:1.0f];
+Class<RCTComponentViewProtocol> FabricDeclarativeViewCls(void) {
+  return RCTColorView.class;
 }
 
 @end

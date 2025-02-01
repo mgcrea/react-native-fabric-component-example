@@ -13,6 +13,12 @@ struct NativeColorViewProps {
   var color: String = ""
 }
 
+extension NativeColorViewProps {
+  init(dictionary: [String: Any]) {
+    color = dictionary["color"] as? String ?? ""
+  }
+}
+
 final class NativeColorViewComponentDescriptor {}
 
 // MARK: - ColorView
@@ -38,20 +44,16 @@ final class ColorView: UIView, ComponentViewProtocol {
     contentView.frame = bounds
   }
 
-  func updateProps(newProps: NativeColorViewProps, oldProps: NativeColorViewProps) {
-    if oldProps.color != newProps.color,
-       let newColor = hexStringToColor(newProps.color)
-    {
-      contentView.backgroundColor = newColor
-    }
-    props = newProps
-  }
-
   @objc
-  func updatePropsWithNewColor(_ newColor: NSString, oldColor: NSString) {
-    let newProps = NativeColorViewProps(color: newColor as String)
-    let oldProps = NativeColorViewProps(color: oldColor as String)
-    updateProps(newProps: newProps, oldProps: oldProps)
+  func updateProps(with newDictionary: [String: Any], oldDictionary: [String: Any]) {
+    let newProps = NativeColorViewProps(dictionary: newDictionary)
+    let oldProps = NativeColorViewProps(dictionary: oldDictionary)
+
+    if newProps.color != oldProps.color,
+       let updatedColor = hexStringToColor(newProps.color)
+    {
+      contentView.backgroundColor = updatedColor
+    }
   }
 
   private func hexStringToColor(_ stringToConvert: String) -> UIColor? {
