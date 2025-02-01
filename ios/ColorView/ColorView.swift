@@ -33,6 +33,11 @@ final class ColorView: UIView, ComponentViewProtocol {
     fatalError("init(coder:) has not been implemented")
   }
 
+  override func layoutSubviews() {
+    super.layoutSubviews()
+    contentView.frame = bounds
+  }
+
   func updateProps(newProps: NativeColorViewProps, oldProps: NativeColorViewProps) {
     if oldProps.color != newProps.color,
        let newColor = hexStringToColor(newProps.color)
@@ -48,14 +53,6 @@ final class ColorView: UIView, ComponentViewProtocol {
     let oldProps = NativeColorViewProps(color: oldColor as String)
     updateProps(newProps: newProps, oldProps: oldProps)
   }
-
-  static func componentDescriptorProvider() -> ComponentDescriptorProvider {
-    return concreteComponentDescriptorProvider(NativeColorViewComponentDescriptor.self)
-  }
-
-//  static var FabricDeclarativeViewCls: RCTComponentViewProtocol.Type {
-//    return ColorView.self
-//  }
 
   private func hexStringToColor(_ stringToConvert: String) -> UIColor? {
     let noHashString = stringToConvert.replacingOccurrences(of: "#", with: "")
